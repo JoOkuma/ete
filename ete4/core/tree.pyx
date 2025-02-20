@@ -1809,13 +1809,13 @@ cdef class Tree:
 
         def get_ete_node(skbio_node):
             ete_node = all_nodes.get(skbio_node, Tree())
-            if skbio_node.props.get('length') is not None:
-                ete_node.dist = float(skbio_node.props.get('length'))
+            if skbio_node.length is not None:
+                ete_node.dist = float(skbio_node.length)
             ete_node.name = skbio_node.name
-            ete_node.add_props(id=skbio_node.props.get('id'))
+            ete_node.add_props(id=skbio_node.id)
             if map_attributes:
                 for a in map_attributes:
-                    ete_node.add_prop(a, skbio_node.props.get(a))
+                    ete_node.add_prop(a, geattr(skbio_node, "a", None))
             return ete_node
 
         all_nodes = {}
