@@ -1815,7 +1815,7 @@ cdef class Tree:
             ete_node.add_props(id=skbio_node.id)
             if map_attributes:
                 for a in map_attributes:
-                    ete_node.add_prop(a, geattr(skbio_node, "a", None))
+                    ete_node.add_prop(a, getattr(skbio_node, "a", None))
             return ete_node
 
         all_nodes = {}
